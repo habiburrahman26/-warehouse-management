@@ -3,7 +3,6 @@ import Feature from '../Feature/Feature';
 import Footer from '../Footer/Footer';
 import Inventory from '../Inventory/Inventory';
 import Header from '../Layout/Header/Header';
-import classes from './Home.module.css';
 
 const Home = () => {
   return (

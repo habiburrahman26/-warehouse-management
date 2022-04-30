@@ -12,12 +12,12 @@ const Registration = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const navigate = useNavigate();
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const navigate = useNavigate();
-
+  // If user register successfully navigate to the home page
   useEffect(() => {
     if (user) {
       navigate('/home', { replace: true });

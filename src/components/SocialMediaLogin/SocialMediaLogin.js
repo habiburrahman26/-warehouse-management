@@ -1,6 +1,25 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import LoadingSpinner from '../../UI/LoadingSpinner';
 
-const SocialMediaLogin = ({name}) => {
+const SocialMediaLogin = ({ name }) => {
+  const navigate = useNavigate();
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  // If user register successfully navigate to the home page
+  useEffect(() => {
+    if (user) {
+      navigate('/home', { replace: true });
+    }
+  }, [user, navigate]);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+
   return (
     <div className="social-meadia-signin">
       <div>
@@ -13,7 +32,7 @@ const SocialMediaLogin = ({name}) => {
         </button>
       </div>
       <div>
-        <button type="button">
+        <button type="button" onClick={() => signInWithGoogle()}>
           <img
             src="https://img.icons8.com/color/48/000000/google-logo.png"
             alt=""
