@@ -1,5 +1,4 @@
 .section-inventory {
-  /* background-color: #f2f5f8; */
   padding-bottom: 9.6rem;
 }
 
@@ -30,3 +29,5 @@
 .link:active{
 border-bottom: 1px solid transparent;
 }
+
+/* @media (max-width:) */
