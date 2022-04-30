@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import './Login.css';
 import { useEffect } from 'react';
+import LoadingSpinner from '../../UI/LoadingSpinner';
 
 const Registration = () => {
   const {
@@ -22,7 +23,8 @@ const Registration = () => {
     if (user) {
       navigate('/home', { replace: true });
     }
-  },[user,navigate]);
+  }, [user, navigate]);
+
 
   const onSubmit = (data) => {
     const email = data.email;
