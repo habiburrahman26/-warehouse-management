@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import './Login.css';
 import { useEffect } from 'react';
-import LoadingSpinner from '../../UI/LoadingSpinner';
 
 const Registration = () => {
   const {
@@ -15,7 +14,7 @@ const Registration = () => {
   } = useForm();
 
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const navigate = useNavigate();
 
@@ -24,7 +23,6 @@ const Registration = () => {
       navigate('/home', { replace: true });
     }
   }, [user, navigate]);
-
 
   const onSubmit = (data) => {
     const email = data.email;
