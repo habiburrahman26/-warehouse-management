@@ -86,3 +86,11 @@
 .btnRegistration:hover {
   background-color: #112caf;
 }
+
+.btnLogout{
+  padding: .9rem 2rem;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  color: #333;
+  border: none;
+}

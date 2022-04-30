@@ -30,9 +30,15 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
+  const forgetPasswordHandler= (data)=>{
+      if(data.email){
+        console.log(data);
+      }
+  }
+
   return (
     <div className="form-container">
-      <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form-control" onSubmit={handleSubmit(onSubmit,forgetPasswordHandler)}>
         <h1 className="heading">Login</h1>
         <div className="input-control">
           <input
@@ -54,7 +60,7 @@ const Login = () => {
             {errors.password?.type === 'required' && 'Password is required'}
           </label>
         </div>
-        <button type="button" className="forgot-password">
+        <button type="button" className="forgot-password" onClick={forgetPasswordHandler}>
           Forget Password?
         </button>
         <p className="error-text">{error?.message}</p>
