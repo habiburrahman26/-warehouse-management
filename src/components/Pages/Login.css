@@ -28,7 +28,8 @@
 .form-control label {
   margin-bottom: 4px;
   display: inline-block;
-  font-size: 17px;
+  font-size: 1.4rem;
+  color: #EB4D4B;
 }
 
 .form-control input {
@@ -80,7 +81,7 @@
 .social-meadia-signin div {
   display: flex;
   justify-content: center;
-  border: 2px solid rgb(180, 178, 178);
+  border: 1px solid rgb(180, 178, 178);
   margin-bottom: 1rem;
 }
 

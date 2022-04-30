@@ -9,7 +9,7 @@ const SocialMediaLogin = ({name}) => {
             src="https://img.icons8.com/glyph-neue/64/000000/github.png"
             alt=""
           />
-          <p>{name} In with github</p>
+          <p>{name} with github</p>
         </button>
       </div>
       <div>

@@ -3,7 +3,7 @@ import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 import './Login.css';
 import { useForm } from 'react-hook-form';
 
-const Login = () => {
+const Registration = () => {
   const {
     register,
     formState: { errors },
@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <div className="form-container">
       <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="heading">Login</h1>
+        <h1 className="heading">Registration</h1>
         <div className="input-control">
           <input
             type="email"
@@ -40,7 +40,7 @@ const Login = () => {
           Forget Password?
         </button>
         <div>
-          <button className="btn-login">Login</button>
+          <button className="btn-login">Registration</button>
         </div>
 
         <div className="line-break">
@@ -48,12 +48,12 @@ const Login = () => {
           <div>or</div>
           <div className="line"></div>
         </div>
-        <SocialMediaLogin name="Login" />
+        <SocialMediaLogin name="Registrater" />
 
         <div className="toggle-page">
-          <p>No account yet? </p>
-          <Link to="/registration" className="link">
-            Register
+          <p>Already have an Account? </p>
+          <Link to="/login" className="link">
+            Login
           </Link>
         </div>
       </form>
@@ -61,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;
