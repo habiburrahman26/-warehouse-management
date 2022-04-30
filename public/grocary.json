@@ -1,0 +1,25 @@
+[
+    {
+        "id":"1",
+        "name":"Basmoti Rice",
+        "image":"https://i.ibb.co/QQxKsYk/basmoti-rice.jpg",
+        "description":"This is Basmoti Rice. This rice is suitable for biriany",
+        "price":"355",
+        "quantity":"10",
+        "supplierName":"Abdul Jolil"
+    },
+    {
+        "id":"2",
+        "name":"Miniket Rice",
+        "image":"https://i.ibb.co/QQxKsYk/basmoti-rice.jpg",
+        "description":"This is Basmoti Rice. This rice is suitable for biriany",
+        "price":"355",
+        "quantity":"10",
+        "supplierName":"Abdul Jolil"
+    }
+]
+
+
+https://i.ibb.co/pjFcw2t/miniket.jpg
+https://i.ibb.co/0ZX6NNh/6-pran-nazirshile-750x750p-min.png
+https://i.ibb.co/Wy0nCrz/cinigura-rice.jpg

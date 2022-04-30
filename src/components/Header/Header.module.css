@@ -1,0 +1,90 @@
+.header {
+  padding: 1.6rem 14rem;
+  font-size: 1.6rem;
+  color: #424649;
+}
+
+.nav-header,
+.heading-container,
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-header {
+  gap: 8rem;
+}
+
+.heading-container {
+  gap: 1rem;
+}
+
+.logo {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 2.6rem;
+}
+
+.nav-item {
+  gap: 4rem;
+  font-size: 1.6rem;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  text-decoration: none;
+  font-weight: 500;
+  color: #424649;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link:active{
+  border-bottom: 1px solid #424649;
+}
+
+.active,
+.active:hover,
+.active:active{
+  color: #2250f4;
+  border-bottom: 2px solid #2250f4;
+}
+
+.btnContainer {
+  margin-left: auto;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btnLogin {
+  padding: 0;
+  margin-right: 3rem;
+  background-color: #fff;
+  color: #424649;
+}
+
+.btnLogin:hover,
+.btnLogin:active{
+  text-decoration: underline;
+}
+
+.btnRegistration {
+  background-color: #2250f4;
+  color: #e5edff;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.btnRegistration:hover {
+  background-color: #112caf;
+}
