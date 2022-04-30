@@ -163,10 +163,6 @@
   transition: all 0.2s;
 }
 
-input.invalid {
-  border: 1px solid #ff6b6b;
-  background-color: #fff5f5;
-}
 
 .toggle-page {
   font-size: 1.3rem;
