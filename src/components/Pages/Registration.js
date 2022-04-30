@@ -54,9 +54,6 @@ const Registration = () => {
             {errors.password?.type === 'required' && 'Password is required'}
           </label>
         </div>
-        <button type="button" className="forgot-password">
-          Forget Password?
-        </button>
         <br />
         {/* firebase error message */}
         <p className="error-text">{error?.message}</p>

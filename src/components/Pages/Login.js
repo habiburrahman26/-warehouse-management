@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 import './Login.css';
 import { useForm } from 'react-hook-form';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
   const {
@@ -10,7 +13,22 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const navigate = useNavigate();
+  // If user register successfully navigate to the home page
+  useEffect(() => {
+    if (user) {
+      navigate('/home', { replace: true });
+    }
+  }, [user, navigate]);
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    signInWithEmailAndPassword(email, password);
+  };
 
   return (
     <div className="form-container">
@@ -39,8 +57,11 @@ const Login = () => {
         <button type="button" className="forgot-password">
           Forget Password?
         </button>
+        <p className="error-text">{error?.message}</p>
         <div>
-          <button className="btn-login">Login</button>
+          <button className="btn-login">
+            {loading ? 'Loading...' : 'Login'}
+          </button>
         </div>
 
         <div className="line-break">
