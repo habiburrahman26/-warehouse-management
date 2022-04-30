@@ -1,0 +1,63 @@
+.inventory {
+  background-color: #fff;
+  padding: 1.4rem 3rem 3rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 8%);
+  transition: all 0.4s;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inventory:hover {
+  transform: translateY(-1.2rem);
+  box-shadow: 0 3.2rem 6.4rem rgb(0 0 0 / 6%);
+}
+
+.img {
+  width: 24rem;
+}
+
+.inventory-text-box {
+  font-size: 1.6rem;
+}
+
+.inventory-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.updateBtn {
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  padding: 1rem 2rem;
+  background-color: rgba(55, 75, 185, 0.1);
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  cursor: pointer;
+  color: #1B98F5;
+  transition: all 0.2s;
+}
+
+.updateBtn:hover {
+  background-color: #1B98F5;
+  color: #fff;
+}
+
+
+.text1{
+  display: flex;
+}
