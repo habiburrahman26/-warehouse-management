@@ -49,7 +49,7 @@ body {
   font-size: 2rem;
   font-weight: 600;
 }
-
+/* 
 .link:visited,
 .link:link {
   display: inline-block;
@@ -65,4 +65,4 @@ body {
 .link:hover,
 .link:active {
   border-bottom: 1px solid transparent;
-}
+} */

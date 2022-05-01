@@ -1,6 +1,5 @@
-import { async } from '@firebase/util';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -10,6 +9,7 @@ import classes from './AddNewItem.module.css';
 
 const AddNewItem = () => {
   const [user] = useAuthState(auth);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     formState: { errors },
@@ -29,11 +29,13 @@ const AddNewItem = () => {
     },
   });
 
-  const onSubmit =async (data) => {
+  const onSubmit = async (data) => {
+    setIsLoading(true);
     const res = await axios.post('http://localhost:5000/addInventory', data);
     if (res.data.insertedId) {
       toast.success('Item Added Successfully');
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -137,7 +139,7 @@ const AddNewItem = () => {
               className={classes['btn-add']}
               onClick={() => setValue('email', user?.email)}
             >
-              Add New Item
+              {isLoading ? 'Adding...' : 'Add New Item'}
             </button>
           </div>
         </form>

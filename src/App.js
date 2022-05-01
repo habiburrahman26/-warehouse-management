@@ -8,6 +8,7 @@ import InventoryDetails from './components/InventoryDetails.js/InventoryDetails'
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import AlIlnventory from './components/Inventory/AlIlnventory';
 import AddNewItem from './components/AddNewItem/AddNewItem';
+import MyItem from './components/MyItems/MyItem';
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
         />
         <Route path="/manageInventories" element={<AlIlnventory />} />
         <Route path="/addItem" element={<AddNewItem />} />
+        <Route
+          path="/myItems"
+          element={
+            <RequireAuth>
+              <MyItem />
+            </RequireAuth>
+          }
+        />
       </Routes>
       <ToastContainer />
     </div>

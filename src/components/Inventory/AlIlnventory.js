@@ -20,10 +20,6 @@ const AlIlnventory = () => {
     getData();
   }, []);
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
   const deleteHandler = (id) => {
     const filterItem = inventories.filter((item) => item._id !== id);
     setInventories(filterItem);
@@ -32,32 +28,34 @@ const AlIlnventory = () => {
   return (
     <>
       <Header />
-
-      <div className={classes['tables']}>
-        <Link className="btn btnRegistration" to="/addItem">
-          Add New Item
-        </Link>
-        <table className={classes.inventories}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Image</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {inventories.map((item) => (
-              <InventoryList
-                key={item._id}
-                {...item}
-                onDelete={deleteHandler}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {isLoading && <LoadingSpinner />}
+      {!isLoading && (
+        <div className={classes['tables']}>
+          <Link className="btn btnRegistration" to="/addItem">
+            Add New Item
+          </Link>
+          <table className={classes.inventories}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {inventories.map((item) => (
+                <InventoryList
+                  key={item._id}
+                  {...item}
+                  onDelete={deleteHandler}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </>
   );
 };
