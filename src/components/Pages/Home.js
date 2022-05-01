@@ -2,12 +2,10 @@ import Banner from '../Banner/Banner';
 import Feature from '../Feature/Feature';
 import Footer from '../Footer/Footer';
 import Inventory from '../Inventory/Inventory';
-import Header from '../Layout/Header/Header';
 
 const Home = () => {
   return (
     <>
-      <Header />
       <div>
         <Banner />
         <Feature />

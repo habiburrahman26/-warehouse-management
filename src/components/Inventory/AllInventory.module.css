@@ -1,0 +1,40 @@
+.tables {
+  padding: 2rem 14rem;
+}
+
+.inventories {
+  border-collapse: collapse;
+  max-width: 70%;
+  margin: 4rem auto;
+  font-size: 1.6rem;
+}
+
+.inventories td,
+.inventories th {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+}
+
+.inventories th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #120e43;
+  color: white;
+}
+
+.img {
+  width: 8rem;
+}
+
+.delete {
+  border: none;
+  padding: 1rem 1.6rem;
+  background-color: #b83c23;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+}

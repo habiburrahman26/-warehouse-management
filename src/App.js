@@ -5,16 +5,32 @@ import Registration from './components/Pages/Registration';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import InventoryDetails from './components/InventoryDetails.js/InventoryDetails';
+import RequireAuth from './components/RequireAuth/RequireAuth';
+import AlIlnventory from './components/Inventory/AlIlnventory';
+import Header from './components/Layout/Header/Header';
 
 function App() {
   return (
     <div>
+      <>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route
+            path="/inventory/:inventoryId"
+            element={
+              <RequireAuth>
+                <InventoryDetails />
+              </RequireAuth>
+            }
+          />
+          <Route path="/manageInventories" element={<AlIlnventory />} />
+        </Routes>
+      </>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
       </Routes>
       <ToastContainer />
     </div>

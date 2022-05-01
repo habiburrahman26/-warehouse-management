@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 import './Login.css';
 import { useForm } from 'react-hook-form';
@@ -15,14 +15,17 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-
   const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || '/';
+
   // If user register successfully navigate to the home page
   useEffect(() => {
     if (user) {
-      navigate('/home', { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [user, navigate]);
+  }, [user, navigate, from]);
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -30,15 +33,18 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  const forgetPasswordHandler= (data)=>{
-      if(data.email){
-        console.log(data);
-      }
-  }
+  const forgetPasswordHandler = (data) => {
+    if (data.email) {
+      console.log(data);
+    }
+  };
 
   return (
     <div className="form-container">
-      <form className="form-control" onSubmit={handleSubmit(onSubmit,forgetPasswordHandler)}>
+      <form
+        className="form-control"
+        onSubmit={handleSubmit(onSubmit, forgetPasswordHandler)}
+      >
         <h1 className="heading">Login</h1>
         <div className="input-control">
           <input
@@ -60,7 +66,11 @@ const Login = () => {
             {errors.password?.type === 'required' && 'Password is required'}
           </label>
         </div>
-        <button type="button" className="forgot-password" onClick={forgetPasswordHandler}>
+        <button
+          type="button"
+          className="forgot-password"
+          onClick={forgetPasswordHandler}
+        >
           Forget Password?
         </button>
         <p className="error-text">{error?.message}</p>

@@ -3,7 +3,7 @@ import {
   useSignInWithFacebook,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 
@@ -19,12 +19,15 @@ const SocialMediaLogin = ({ name }) => {
     content = error?.message;
   }
 
+  const location = useLocation();
+  let from = location.state?.from?.pathname || '/';
+
   // If user register successfully navigate to the home page
   useEffect(() => {
     if (user || user1) {
-      navigate('/home', { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [user, user1, navigate]);
+  }, [user, user1, navigate,from]);
 
   if (loading || loading1) {
     return <LoadingSpinner />;
