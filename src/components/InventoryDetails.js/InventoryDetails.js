@@ -1,6 +1,9 @@
+import { async } from '@firebase/util';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import LoadingSpinner from '../../UI/LoadingSpinner';
 import classes from './InventoryDetails.module.css';
 
 const InventoryDetails = () => {
@@ -20,6 +23,37 @@ const InventoryDetails = () => {
     getData();
   }, [inventoryId]);
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  const deleveredHandler = async () => {
+    const { data } = await axios.post(
+      `http://localhost:5000/inventoryDelevered/${inventoryId}`,
+      { quantity: 1 }
+    );
+
+    if (data.modifiedCount) {
+      setInventory({ ...inventory, quantity: inventory.quantity - 1 });
+      toast.success('Delivered Successfully');
+    }
+  };
+
+  const restockHandler = async (e) => {
+    e.preventDefault();
+    const quantity = +e.target.quantity.value;
+
+    const { data } = await axios.post(
+      `http://localhost:5000/inventoryRestore/${inventoryId}`,
+      { quantity: quantity }
+    );
+
+    if (data.modifiedCount) {
+      setInventory({ ...inventory, quantity: inventory.quantity + quantity });
+      toast.success('Restore Successfully');
+    }
+  };
+
   return (
     <section className={classes['section-details']}>
       <h1 className={classes.heading}>Inventory Details</h1>
@@ -32,7 +66,7 @@ const InventoryDetails = () => {
             <h3 className={classes['inventory-name']}>{inventory.name}</h3>
             <p className={classes.text}>
               <span className={classes.bold}>Quantity: </span>
-              {inventory.quantity}
+              {inventory.quantity ? inventory.quantity : 'Stock Out'}
             </p>
             <p className={classes.text}>
               <span className={classes.bold}>Price: </span>
@@ -42,21 +76,24 @@ const InventoryDetails = () => {
               <span className={classes.bold}>Supplier name: </span>
               {inventory.supplierName}
             </p>
-            <form>
-              <input className={classes.input} type="number" required />
-              <input type="submit" value="Restock" className={classes.submit}/>
+            <form onSubmit={restockHandler}>
+              <input
+                className={classes.input}
+                name="quantity"
+                type="number"
+                required
+              />
+              <input type="submit" value="Restock" className={classes.submit} />
             </form>
-            <button className={classes.delivered}>Delivered</button>
+            <button onClick={deleveredHandler} className={classes.delivered}>
+              Delivered
+            </button>
           </div>
 
           <div className={classes.description}>
             <p className={classes.descriptionText}>Description</p>
             <p className={classes.text}>{inventory.description}</p>
           </div>
-        </div>
-
-        <div className={classes.action}>
-          {/* <button className={classes.delivered}>Delivered</button> */}
         </div>
       </div>
     </section>
