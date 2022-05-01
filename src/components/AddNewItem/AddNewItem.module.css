@@ -1,0 +1,70 @@
+.form-control {
+  max-width: 40rem;
+  margin: 3rem auto 2rem auto;
+  border: 1px solid #a8a9aa;
+  padding: 4rem 4rem;
+  border-radius: 4px;
+  border-radius: 5px;
+}
+
+.heading {
+  font-size: 2.6rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-control label {
+  margin-bottom: 4px;
+  display: inline-block;
+  font-size: 1.4rem;
+  color: #eb4d4b;
+}
+
+.form-control input,
+.form-control textarea {
+  display: block;
+  font-size: 16px;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #a8a9aa;
+  color: #333;
+}
+
+.form-control input:focus {
+  outline: none;
+  border: 1px solid #46b2e0;
+}
+
+.form-control input::placeholder,
+.form-control textarea::placeholder {
+  font-size: 1.4rem;
+}
+
+.input-control {
+  margin-bottom: 0.2rem;
+}
+
+.btn-add {
+  border: none;
+  padding: 0.8rem 2rem;
+  width: 100%;
+  background-color: #1b98f5;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-add:hover {
+  background-color: #46b2e0;
+}
+
+@media (max-width: 36em) {
+  .form-control {
+    max-width: 94%;
+  }
+}

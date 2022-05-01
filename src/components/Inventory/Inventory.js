@@ -30,7 +30,7 @@ const Inventory = () => {
             </div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Link className={classes.link} to="/manageInventories">
+            <Link className='link' to="/manageInventories">
               Manage Inventories &rarr;
             </Link>
           </div>

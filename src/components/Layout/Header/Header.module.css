@@ -91,7 +91,12 @@
   font-weight: 500;
   padding: .9rem 2rem;
   border-radius: 5px;
-  background-color: #ced4da;
+  background-color: #fff;
+  border: 2px solid #ffa8a8;
+  transition: all .2s;
+}
+
+.btnLogout:hover{
+  background-color: #ffa8a8;
   color: #fff;
-  border: none;
 }

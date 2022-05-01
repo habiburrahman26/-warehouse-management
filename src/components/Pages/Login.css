@@ -178,6 +178,29 @@
   color: #A8A9AA;
 }
 
+
+.btn {
+  text-decoration: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
+.btnRegistration {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: #2250f4;
+  color: #e5edff;
+  padding: .9rem 2rem;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.btnRegistration:hover {
+  background-color: #112caf;
+}
+
 @media (max-width: 36em) {
   .form-control {
     max-width: 94%;

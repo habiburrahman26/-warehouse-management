@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 import classes from './InventoryDetails.module.css';
@@ -94,6 +94,11 @@ const InventoryDetails = () => {
             <p className={classes.text}>{inventory.description}</p>
           </div>
         </div>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <Link className='link' to="/manageInventories">
+          Manage Inventories &rarr;
+        </Link>
       </div>
     </section>
   );
