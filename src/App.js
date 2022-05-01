@@ -4,6 +4,7 @@ import Login from './components/Pages/Login';
 import Registration from './components/Pages/Registration';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import InventoryDetails from './components/InventoryDetails.js/InventoryDetails';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
       </Routes>
       <ToastContainer />
     </div>

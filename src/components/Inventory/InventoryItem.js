@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import classes from './InventoryItem.module.css';
 
 const InventoryItem = (props) => {
-  const { id, name, image, quantity, price, description, supplierName } = props;
+  const { _id, name, image, quantity, price, description, supplierName } = props;
   return (
     <div className={classes.inventory}>
       <div className={classes.line}>
@@ -26,7 +26,7 @@ const InventoryItem = (props) => {
         <p>
           <span className="bold">Price:</span> {price}Tk
         </p>
-        <Link to={`/inventory/${id}`} className={classes.updateBtn}>
+        <Link to={`/inventory/${_id}`} className={classes.updateBtn}>
           Update
         </Link>
       </div>

@@ -6,27 +6,37 @@ import InventoryItem from './InventoryItem';
 
 const Inventory = () => {
   const [inventoryItems, setInventoryItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    axios.get('grocary.json').then(({ data }) => setInventoryItems(data));
+    setIsLoading(true);
+    axios.get('http://localhost:5000/inventory').then(({ data }) => {
+      setInventoryItems(data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
-    <section className={classes['section-inventory']}>
-      <div className={classes['inventory-container']}>
-        <h2 className="heading-secondary">Inventory Items</h2>
-        <div className={classes.inventorys}>
-          {inventoryItems.slice(0, 6).map((item) => (
-            <InventoryItem key={item.id} {...item} />
-          ))}
-        </div>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <Link className={classes.link} to="/manageInventories">
-          Manage Inventories &rarr;
-        </Link>
-      </div>
-    </section>
+    <>
+    {isLoading && <p className='center'>Loading...</p>}
+      {!isLoading && (
+        <section className={classes['section-inventory']}>
+          <div className={classes['inventory-container']}>
+            <h2 className="heading-secondary">Inventory Items</h2>
+            <div className={classes.inventorys}>
+              {inventoryItems.slice(0, 6).map((item) => (
+                <InventoryItem key={item._id} {...item} />
+              ))}
+            </div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <Link className={classes.link} to="/manageInventories">
+              Manage Inventories &rarr;
+            </Link>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 

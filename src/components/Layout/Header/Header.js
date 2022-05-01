@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/icon/logo.png';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import classes from './Header.module.css';
@@ -10,15 +10,16 @@ import { signOut } from 'firebase/auth';
 const Header = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  if(loading){
-    return <LoadingSpinner/>
+  if (loading) {
+    return <LoadingSpinner />;
   }
 
-  const logoutHandler = ()=>{
+  const logoutHandler = () => {
     signOut(auth);
-    navigate('/login')
-  }
+    navigate('/login');
+  };
 
   return (
     <header className={classes.header}>
@@ -36,7 +37,7 @@ const Header = () => {
                     ? `${classes['active']} ${classes['nav-link']}`
                     : classes['nav-link']
                 }
-                to="/home"
+                to={`${location.pathname==='/home' ? '/home' : '/'}`}
               >
                 Home
               </NavLink>
@@ -114,7 +115,8 @@ const Header = () => {
             </>
           )}
           {user && (
-            <button onClick={logoutHandler}
+            <button
+              onClick={logoutHandler}
               className={`${classes.btn} ${classes.btnLogout}`}
             >
               Logout
