@@ -2,17 +2,17 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 import InventoryList from './InventoryList';
-import classes from './AllInventory.module.css'
+import classes from './AllInventory.module.css';
 
 const AlIlnventory = () => {
-  const [inventories, seTInventories] = useState([]);
+  const [inventories, setInventories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
       const { data } = await axios.get('http://localhost:5000/inventorys');
-      seTInventories(data);
+      setInventories(data);
       setIsLoading(false);
     };
     getData();
@@ -21,6 +21,11 @@ const AlIlnventory = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  const deleteHandler = (id) => {
+    const filterItem = inventories.filter((item) => item._id !== id);
+    setInventories(filterItem);
+  };
 
   return (
     <div className={classes['tables']}>
@@ -36,7 +41,7 @@ const AlIlnventory = () => {
         </thead>
         <tbody>
           {inventories.map((item) => (
-            <InventoryList key={item._id} {...item} />
+            <InventoryList key={item._id} {...item} onDelete={deleteHandler} />
           ))}
         </tbody>
       </table>
