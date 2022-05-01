@@ -63,7 +63,7 @@ const Header = () => {
                         ? `${classes['active']} ${classes['nav-link']}`
                         : classes['nav-link']
                     }
-                    to="/manageItems"
+                    to="/manageInventories"
                   >
                     Mange Items
                   </NavLink>

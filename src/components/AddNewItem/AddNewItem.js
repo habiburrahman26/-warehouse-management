@@ -1,4 +1,6 @@
+import { async } from '@firebase/util';
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -12,20 +14,40 @@ const AddNewItem = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+    formState,
+    setValue,
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: user?.email,
+      quantity: '',
+      price: '',
+      description: '',
+      supplierName: '',
+      image: '',
+    },
+  });
 
-  const onSubmit = async (data) => {
+  const onSubmit =async (data) => {
     const res = await axios.post('http://localhost:5000/addInventory', data);
     if (res.data.insertedId) {
       toast.success('Item Added Successfully');
     }
   };
 
-  const forgetPasswordHandler = (data) => {
-    if (data.email) {
-      console.log(data);
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({
+        name: '',
+        quantity: '',
+        price: '',
+        description: '',
+        supplierName: '',
+        image: '',
+      });
     }
-  };
+  }, [formState, reset]);
 
   return (
     <>
@@ -33,7 +55,7 @@ const AddNewItem = () => {
       <div className={classes['form-container']}>
         <form
           className={classes['form-control']}
-          onSubmit={handleSubmit(onSubmit, forgetPasswordHandler)}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <h1 className={classes.heading}>Add New Item</h1>
           <div className={classes['input-control']}>
@@ -111,7 +133,12 @@ const AddNewItem = () => {
           </div>
 
           <div>
-            <button className={classes['btn-add']}>Add New Item</button>
+            <button
+              className={classes['btn-add']}
+              onClick={() => setValue('email', user?.email)}
+            >
+              Add New Item
+            </button>
           </div>
         </form>
       </div>
