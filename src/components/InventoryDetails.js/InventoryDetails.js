@@ -49,8 +49,8 @@ const InventoryDetails = () => {
             <button className={classes.delivered}>Delivered</button>
           </div>
 
-          <div>
-            <p className={classes.description}>Description</p>
+          <div className={classes.description}>
+            <p className={classes.descriptionText}>Description</p>
             <p className={classes.text}>{inventory.description}</p>
           </div>
         </div>
