@@ -38,7 +38,7 @@ const Login = () => {
 
   // token generate
   const tokenGenerate = async (email) => {
-    const { data } = await axios.post('http://localhost:5000/token', {
+    const { data } = await axios.post('https://fathomless-coast-62063.herokuapp.com/token', {
       email: email,
     });
     localStorage.setItem('token', `${data.token}`);

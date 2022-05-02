@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 import InventoryList from '../Inventory/InventoryList';
@@ -12,15 +14,28 @@ const MyItem = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [user] = useAuthState(auth);
   const email = user?.email;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
-      setIsLoading(true);
-      const { data } = await axios.get(
-        `https://fathomless-coast-62063.herokuapp.com/myItem?email=${email}`
-      );
-      setItems(data);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const res = await axios.get(
+          `https://fathomless-coast-62063.herokuapp.com/myItem?email=${email}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        );
+        setItems(res.data);
+        setIsLoading(false);
+      } catch (err) {
+        if (err.response.status === 401 || err.response.status === 403) {
+          navigate('/login', { replace: true });
+          signOut(auth);
+        }
+      }
     };
     getData();
   }, [email]);
