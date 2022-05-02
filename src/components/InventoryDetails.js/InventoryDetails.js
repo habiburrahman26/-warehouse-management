@@ -8,13 +8,15 @@ import classes from './InventoryDetails.module.css';
 const InventoryDetails = () => {
   const [inventory, setInventory] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [deleverLoading, setDeleverLoading] = useState(false);
+  const [restockLoading, setRestockLoading] = useState(false);
   const { inventoryId } = useParams();
 
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/inventory/${inventoryId}`
+        `https://fathomless-coast-62063.herokuapp.com/inventory/${inventoryId}`
       );
       setInventory(data);
       setIsLoading(false);
@@ -27,10 +29,12 @@ const InventoryDetails = () => {
   }
 
   const deleveredHandler = async () => {
+    setDeleverLoading(true);
     const { data } = await axios.post(
-      `http://localhost:5000/inventoryDelevered/${inventoryId}`,
+      `https://fathomless-coast-62063.herokuapp.com/inventoryDelevered/${inventoryId}`,
       { quantity: 1 }
     );
+    setDeleverLoading(false);
 
     if (data.modifiedCount) {
       setInventory({ ...inventory, quantity: inventory.quantity - 1 });
@@ -42,16 +46,19 @@ const InventoryDetails = () => {
     e.preventDefault();
     const quantity = +e.target.quantity.value;
 
+    setRestockLoading(true);
     const { data } = await axios.post(
-      `http://localhost:5000/inventoryRestore/${inventoryId}`,
+      `https://fathomless-coast-62063.herokuapp.com/inventoryRestore/${inventoryId}`,
       { quantity: quantity }
     );
+    setRestockLoading(false);
 
     if (data.modifiedCount) {
       setInventory({ ...inventory, quantity: inventory.quantity + quantity });
       toast.success('Restore Successfully');
     }
   };
+
 
   return (
     <section className={classes['section-details']}>
@@ -82,10 +89,17 @@ const InventoryDetails = () => {
                 type="number"
                 required
               />
-              <input type="submit" value="Restock" className={classes.submit} />
+              <input
+                type="submit"
+                value={restockLoading ? 'Restock...' : 'Restock'}
+                className={classes.submit}
+              />
             </form>
-            <button onClick={deleveredHandler} className={classes.delivered}>
-              Delivered
+            <button
+              onClick={deleveredHandler}
+              className={classes.delivered}
+            >
+              {deleverLoading ? 'Delevering...' : 'Delivered'}
             </button>
           </div>
 
@@ -96,7 +110,7 @@ const InventoryDetails = () => {
         </div>
       </div>
       <div style={{ textAlign: 'center' }}>
-        <Link className='link' to="/manageInventories">
+        <Link className={classes.link} to="/manageInventories">
           Manage Inventories &rarr;
         </Link>
       </div>

@@ -10,7 +10,7 @@ const Inventory = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get('http://localhost:5000/inventory').then(({ data }) => {
+    axios.get('https://fathomless-coast-62063.herokuapp.com/inventory').then(({ data }) => {
       setInventoryItems(data);
       setIsLoading(false);
     });
@@ -30,7 +30,7 @@ const Inventory = () => {
             </div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Link className='link' to="/manageInventories">
+            <Link className={classes.link} to="/manageInventories">
               Manage Inventories &rarr;
             </Link>
           </div>

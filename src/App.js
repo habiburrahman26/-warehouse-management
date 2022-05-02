@@ -9,6 +9,8 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import AlIlnventory from './components/Inventory/AlIlnventory';
 import AddNewItem from './components/AddNewItem/AddNewItem';
 import MyItem from './components/MyItems/MyItem';
+import Blogs from './components/Blogs/Blogs';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route
@@ -36,6 +39,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
     </div>

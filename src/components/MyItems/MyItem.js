@@ -17,7 +17,7 @@ const MyItem = () => {
     const getData = async () => {
       setIsLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/myItem?email=${email}`
+        `https://fathomless-coast-62063.herokuapp.com/myItem?email=${email}`
       );
       setItems(data);
       setIsLoading(false);

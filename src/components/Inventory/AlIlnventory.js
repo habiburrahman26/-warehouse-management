@@ -13,7 +13,7 @@ const AlIlnventory = () => {
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
-      const { data } = await axios.get('http://localhost:5000/inventorys');
+      const { data } = await axios.get('https://fathomless-coast-62063.herokuapp.com/inventorys');
       setInventories(data);
       setIsLoading(false);
     };

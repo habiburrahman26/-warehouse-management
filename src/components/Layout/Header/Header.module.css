@@ -2,6 +2,9 @@
   padding: 2rem 14rem;
   font-size: 1.6rem;
   color: #424649;
+  /* background-color: #e7f5ff; */
+  box-shadow: 0 .2rem .5rem rgb(0 0 0 / 4%);
+  
 }
 
 .nav-header,

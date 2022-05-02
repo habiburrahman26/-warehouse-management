@@ -31,7 +31,7 @@ const AddNewItem = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-    const res = await axios.post('http://localhost:5000/addInventory', data);
+    const res = await axios.post('https://fathomless-coast-62063.herokuapp.com/addInventory', data);
     if (res.data.insertedId) {
       toast.success('Item Added Successfully');
     }

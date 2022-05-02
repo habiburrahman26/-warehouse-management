@@ -8,7 +8,7 @@ const InventoryList = (props) => {
   const deleteHandler = async (id) => {
     const confirm = window.confirm('Are You sure you want to delete?');
     if (confirm) {
-      const { data } = await axios.delete(`http://localhost:5000/delete/${id}`);
+      const { data } = await axios.delete(`https://fathomless-coast-62063.herokuapp.com/delete/${id}`);
       if (data.deletedCount) {
         toast.success('Item deleted successfully');
         onDelete(id);

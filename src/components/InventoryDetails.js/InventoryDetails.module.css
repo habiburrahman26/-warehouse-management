@@ -97,6 +97,25 @@
   cursor: pointer;
 }
 
+
+
+.link:visited,
+.link:link {
+  display: inline-block;
+  margin-top: 4rem;
+  font-size: 1.8rem;
+  color: #1B98F5;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active{
+border-bottom: 1px solid transparent;
+}
+
 @media (max-width: 62.5em) {
   .details-container {
     max-width: 80rem;

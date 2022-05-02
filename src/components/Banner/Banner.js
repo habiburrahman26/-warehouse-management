@@ -1,5 +1,5 @@
 import classes from './Banner.module.css';
-import banner from '../../assets/images/banner.png';
+import banner from '../../assets/images/banner.webp';
 
 const Banner = () => {
   return (
