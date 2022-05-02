@@ -1,22 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 import './Login.css';
 import { useForm } from 'react-hook-form';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+  useSignInWithEmailAndPassword,
+  useSendPasswordResetEmail,
+} from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
+import { async } from '@firebase/util';
+import axios from 'axios';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const emailRef = useRef();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [enteredEmail, setEnteredEmail] = useState('');
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
   let from = location.state?.from?.pathname || '/';
 
@@ -27,30 +36,41 @@ const Login = () => {
     }
   }, [user, navigate, from]);
 
+  // token generate
+  const tokenGenerate = async (email) => {
+    const { data } = await axios.post('http://localhost:5000/token', {
+      email: email,
+    });
+    localStorage.setItem('token', `${data.token}`);
+  };
+
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
     signInWithEmailAndPassword(email, password);
+    tokenGenerate(email);
   };
 
-  const forgetPasswordHandler = (data) => {
-    if (data.email) {
-      console.log(data);
+  // send email password rest link
+  const forgetPasswordHandler = async (e) => {
+    if (enteredEmail.trim() !== '') {
+      await sendPasswordResetEmail(enteredEmail);
+      toast.info('Email Send');
+    } else {
+      toast.error('Please enter your email');
     }
   };
 
   return (
     <div className="form-container">
-      <form
-        className="form-control"
-        onSubmit={handleSubmit(onSubmit, forgetPasswordHandler)}
-      >
+      <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
         <h1 className="heading">Login</h1>
         <div className="input-control">
           <input
             type="email"
             {...register('email', { required: true })}
             placeholder="Email"
+            onChange={(e) => setEnteredEmail(e.target.value)}
           />
           <label>
             {errors.email?.type === 'required' && 'Email is required'}
