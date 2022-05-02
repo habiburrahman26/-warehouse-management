@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import './Login.css';
 import { useEffect } from 'react';
+import useToken from '../../hooks/useToken';
 
 const Registration = () => {
   const {
@@ -16,13 +17,14 @@ const Registration = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const {token} = useToken(user);
 
   // If user register successfully navigate to the home page
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate('/home', { replace: true });
     }
-  }, [user, navigate]);
+  }, [token, navigate]);
 
   const onSubmit = (data) => {
     const email = data.email;

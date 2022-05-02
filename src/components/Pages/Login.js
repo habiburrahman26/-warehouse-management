@@ -9,13 +9,12 @@ import {
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
-import { async } from '@firebase/util';
 import axios from 'axios';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const emailRef = useRef();
   const {
     register,
     formState: { errors },
@@ -27,20 +26,26 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
+  // token
+  const { token } = useToken(user);
+
   let from = location.state?.from?.pathname || '/';
 
   // If user register successfully navigate to the home page
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   // token generate
   const tokenGenerate = async (email) => {
-    const { data } = await axios.post('https://fathomless-coast-62063.herokuapp.com/token', {
-      email: email,
-    });
+    const { data } = await axios.post(
+      'https://fathomless-coast-62063.herokuapp.com/token',
+      {
+        email: email,
+      }
+    );
     localStorage.setItem('token', `${data.token}`);
   };
 

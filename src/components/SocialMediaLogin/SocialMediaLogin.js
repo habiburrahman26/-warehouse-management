@@ -5,6 +5,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 
 const SocialMediaLogin = ({ name }) => {
@@ -12,6 +13,7 @@ const SocialMediaLogin = ({ name }) => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithFacebook, user1, loading1, error1] =
     useSignInWithFacebook(auth);
+  const { token } = useToken(user || user1);
 
   let content;
 
@@ -24,10 +26,10 @@ const SocialMediaLogin = ({ name }) => {
 
   // If user register successfully navigate to the home page
   useEffect(() => {
-    if (user || user1) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, user1, navigate,from]);
+  }, [token, navigate, from]);
 
   if (loading || loading1) {
     return <LoadingSpinner />;
