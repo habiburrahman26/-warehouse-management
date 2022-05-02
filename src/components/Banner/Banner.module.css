@@ -35,3 +35,35 @@
 .btnStarted:hover {
   background-color: #112caf;
 }
+
+@media (max-width: 68.75em) {
+  .banner {
+    padding: 4rem 4rem;
+  }
+}
+
+@media (max-width: 56.25em) {
+  .banner-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .img {
+    width: 75%;
+  }
+}
+
+@media (max-width: 40em) {
+  .banner-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .text {
+    font-size: 1.6rem;
+  }
+
+  .img {
+    width: 90%;
+  }
+}

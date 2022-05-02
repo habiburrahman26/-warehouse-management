@@ -2,9 +2,7 @@
   padding: 2rem 14rem;
   font-size: 1.6rem;
   color: #424649;
-  /* background-color: #e7f5ff; */
-  box-shadow: 0 .2rem .5rem rgb(0 0 0 / 4%);
-  
+  box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 4%);
 }
 
 .nav-header,
@@ -38,20 +36,20 @@
   list-style: none;
 }
 
-.nav-link{
+.nav-link {
   text-decoration: none;
   font-weight: 500;
   color: #424649;
   border-bottom: 1px solid transparent;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   border-bottom: 1px solid #424649;
 }
 
 .active,
 .active:hover,
-.active:active{
+.active:active {
   color: #2250f4;
   border-bottom: 2px solid #2250f4;
 }
@@ -74,14 +72,14 @@
 }
 
 .btnLogin:hover,
-.btnLogin:active{
+.btnLogin:active {
   text-decoration: underline;
 }
 
 .btnRegistration {
   background-color: #2250f4;
   color: #e5edff;
-  padding: .9rem 2rem;
+  padding: 0.9rem 2rem;
   border-radius: 5px;
   transition: all 0.2s;
 }
@@ -90,16 +88,26 @@
   background-color: #112caf;
 }
 
-.btnLogout{
+.btnLogout {
   font-weight: 500;
-  padding: .9rem 2rem;
+  padding: 0.9rem 2rem;
   border-radius: 5px;
   background-color: #fff;
   border: 2px solid #ffa8a8;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.btnLogout:hover{
+.btnLogout:hover {
   background-color: #ffa8a8;
   color: #fff;
+}
+
+@media (max-width: 75em) {
+  .header {
+    padding: 2rem 14rem;
+    font-size: 1.6rem;
+    color: #424649;
+    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 4%);
+    display: none;
+  }
 }

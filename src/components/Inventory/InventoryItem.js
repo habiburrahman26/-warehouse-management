@@ -5,7 +5,7 @@ const InventoryItem = (props) => {
   const { _id, name, image, quantity, price, description, supplierName } = props;
   return (
     <div className={classes.inventory}>
-      <div className={classes.line}>
+      <div className={classes['img-box']}>
         <img src={image} alt="" className={classes.img} />
       </div>
       <div className={classes['inventory-text-box']}>

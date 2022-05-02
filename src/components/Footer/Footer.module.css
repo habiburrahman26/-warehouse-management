@@ -1,6 +1,7 @@
 .footer {
   border-top: 1px solid #eee;
   padding: 10rem 14rem;
+  display: none;
 }
 
 .container {
