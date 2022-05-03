@@ -11,27 +11,24 @@ const ClientReview = () => {
         <div className={classes.reviews}>
           <div className={classes.review}>
             <p className={classes.text}>
-              I truly loved the venue. The staffs were so good, they were best
-              at hospitality and services. The venue was very beautiful, the
-              decor was superbly done.
+              I truly loved the there service. The staffs were so good, they
+              were best at hospitality and services.
             </p>
             <img src={person1} alt="person 1" />
             <p className={classes.name}>Amit Saha</p>
           </div>
           <div className={classes.review}>
             <p className={classes.text}>
-              I truly loved the venue. The staffs were so good, they were best
-              at hospitality and services. The venue was very beautiful, the
-              decor was superbly done.
+              It was a really alluring experience for me. We were very happy
+              with their overall services.
             </p>
             <img src={person2} alt="person 2" />
             <p className={classes.name}>Maxmimullan</p>
           </div>
           <div className={classes.review}>
             <p className={classes.text}>
-              I truly loved the venue. The staffs were so good, they were best
-              at hospitality and services. The venue was very beautiful, the
-              decor was superbly done.
+              e-store is make thing awosome. We enjoy there services. We get
+              product on time and calculation is correct all time.
             </p>
             <img src={person3} alt="person 3" />
             <p className={classes.name}>Rahul Depp</p>
