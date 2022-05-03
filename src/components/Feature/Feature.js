@@ -11,7 +11,7 @@ const Feature = () => {
     <section className={classes['section-featured']}>
       <div className={classes.container}>
         <h2 className={classes['heading-featured-in']}>
-          Trusted by companies of all sizes
+          Trusted by companies
         </h2>
         <div className={classes.logos}>
           <img src={amazon} alt="amazon logo" />

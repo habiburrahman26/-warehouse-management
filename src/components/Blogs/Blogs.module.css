@@ -19,3 +19,21 @@
   font-size: 1.6rem;
   line-height: 1.6;
 }
+
+@media (max-width: 68.75em) {
+  .blogs {
+    padding: 4rem 8rem;
+  }
+}
+
+@media (max-width: 56.25em) {
+  .blogs {
+    padding: 4rem 4rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .blogs {
+    padding: 4rem 1.6rem;
+  }
+}

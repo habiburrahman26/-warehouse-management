@@ -14,6 +14,7 @@
 
 .nav-header {
   gap: 8rem;
+  /* position: relative; */
 }
 
 .heading-container {
@@ -102,12 +103,77 @@
   color: #fff;
 }
 
-@media (max-width: 75em) {
+.icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  display: none;
+}
+
+@media (max-width: 68.75em) {
   .header {
-    padding: 2rem 14rem;
-    font-size: 1.6rem;
-    color: #424649;
-    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 4%);
+    padding: 2rem 4rem;
+  }
+}
+@media (max-width: 60.75em) {
+  .nav-item.close,
+  .btnContainer.close {
     display: none;
+  }
+
+  .nav-item.show {
+    display: block;
+    position: absolute;
+    top: 12%;
+    left: 0;
+    background-color: #ebeffa;
+    width: 100vw;
+    height: 90vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+  .btnContainer.show {
+    display: block;
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .btnLogin {
+    background-color: #ebeffa;
+    text-align: center;
+  }
+
+  .icon {
+    margin-left: auto;
+    display: block;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 36em) {
+  .header {
+    padding: 2rem 2rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .icon {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 }

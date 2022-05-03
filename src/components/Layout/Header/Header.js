@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/icon/logo.png';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -11,6 +11,12 @@ const Header = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [toggle, setToggle] = useState(false);
+
+  const changeToggle = () => {
+    setToggle((prevState) => !prevState);
+  };
 
   if (loading) {
     return <LoadingSpinner />;
@@ -29,7 +35,12 @@ const Header = () => {
           <h1 className={classes.heading}>E-store</h1>
         </div>
         <nav className={classes['nav-items']}>
-          <ul className={classes['nav-item']}>
+          <ul
+            onClick={changeToggle}
+            className={`${classes['nav-item']} ${
+              toggle ? classes.show : classes.close
+            }`}
+          >
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -37,7 +48,7 @@ const Header = () => {
                     ? `${classes['active']} ${classes['nav-link']}`
                     : classes['nav-link']
                 }
-                to={`${location.pathname==='/home' ? '/home' : '/'}`}
+                to={`${location.pathname === '/home' ? '/home' : '/'}`}
               >
                 Home
               </NavLink>
@@ -97,7 +108,12 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className={classes.btnContainer}>
+        <div
+          onClick={changeToggle}
+          className={`${classes.btnContainer} ${
+            toggle ? classes.show : classes.close
+          }`}
+        >
           {!user && (
             <>
               <NavLink
@@ -123,6 +139,22 @@ const Header = () => {
             </button>
           )}
         </div>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={classes.icon}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+          onClick={changeToggle}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
       </div>
     </header>
   );
