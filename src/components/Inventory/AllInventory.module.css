@@ -1,14 +1,14 @@
 .tables {
   padding: 2rem 14rem;
-  /* background-color: #f8f9fa; */
   text-align: center;
 }
 
 .inventories {
   border-collapse: collapse;
-  max-width: 70%;
+  min-width: 70%;
   margin: 4rem auto;
   font-size: 1.6rem;
+  text-align: left;
 }
 
 .inventories td,
@@ -21,8 +21,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: left;
-  background-color: #120e43;
-  color: white;
+  background-color: #e6e6e9;
   font-weight: 500;
 }
 
@@ -40,4 +39,37 @@
   text-transform: uppercase;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media (max-width: 56.25em) {
+  .tables {
+    padding: 2rem 6rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 36em) {
+  .tables {
+    padding: 2rem .6rem;
+  }
+
+  .inventories {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .delete {
+    padding: .45rem .6rem;
+    background-color: #b83c23;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-transform: none;
+    cursor: pointer;
+  }
+
+  .img {
+    width: 4rem;
+  }
 }
