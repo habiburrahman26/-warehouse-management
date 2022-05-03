@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 import './Login.css';
