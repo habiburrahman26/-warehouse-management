@@ -1,4 +1,5 @@
 import Banner from '../Banner/Banner';
+import ClientReview from '../ClientReview/ClientReview';
 import Feature from '../Feature/Feature';
 import Footer from '../Footer/Footer';
 import Inventory from '../Inventory/Inventory';
@@ -12,6 +13,7 @@ const Home = () => {
         <Banner />
         <Feature />
         <Inventory />
+        <ClientReview/>
         <Footer />
       </div>
     </>
