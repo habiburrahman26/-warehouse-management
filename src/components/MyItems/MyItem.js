@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../../UI/LoadingSpinner';
+import PageTitle from '../../UI/PageTitle';
 import InventoryList from '../Inventory/InventoryList';
 import Header from '../Layout/Header/Header';
 import classes from './MyItem.module.css';
@@ -38,7 +39,7 @@ const MyItem = () => {
       }
     };
     getData();
-  }, [email]);
+  }, [email, navigate]);
 
   const deleteHandler = (id) => {
     const filterItem = items.filter((item) => item._id !== id);
@@ -47,6 +48,7 @@ const MyItem = () => {
 
   return (
     <div>
+      <PageTitle title="My item" />
       <Header />
       {isLoading && <LoadingSpinner />}
       {!isLoading && (

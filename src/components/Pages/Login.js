@@ -11,6 +11,7 @@ import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import useToken from '../../hooks/useToken';
+import PageTitle from '../../UI/PageTitle';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -67,59 +68,62 @@ const Login = () => {
   };
 
   return (
-    <div className="form-container">
-      <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="heading">Login</h1>
-        <div className="input-control">
-          <input
-            type="email"
-            {...register('email', { required: true })}
-            placeholder="Email"
-            onChange={(e) => setEnteredEmail(e.target.value)}
-          />
-          <label>
-            {errors.email?.type === 'required' && 'Email is required'}
-          </label>
-        </div>
-        <div className="input-control">
-          <input
-            type="password"
-            {...register('password', { required: true })}
-            placeholder="Password"
-          />
-          <label>
-            {errors.password?.type === 'required' && 'Password is required'}
-          </label>
-        </div>
-        <button
-          type="button"
-          className="forgot-password"
-          onClick={forgetPasswordHandler}
-        >
-          Forget Password?
-        </button>
-        <p className="error-text">{error?.message}</p>
-        <div>
-          <button className="btn-login">
-            {loading ? 'Loading...' : 'Login'}
+    <>
+      <PageTitle title="Login" />
+      <div className="form-container">
+        <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="heading">Login</h1>
+          <div className="input-control">
+            <input
+              type="email"
+              {...register('email', { required: true })}
+              placeholder="Email"
+              onChange={(e) => setEnteredEmail(e.target.value)}
+            />
+            <label>
+              {errors.email?.type === 'required' && 'Email is required'}
+            </label>
+          </div>
+          <div className="input-control">
+            <input
+              type="password"
+              {...register('password', { required: true })}
+              placeholder="Password"
+            />
+            <label>
+              {errors.password?.type === 'required' && 'Password is required'}
+            </label>
+          </div>
+          <button
+            type="button"
+            className="forgot-password"
+            onClick={forgetPasswordHandler}
+          >
+            Forget Password?
           </button>
-        </div>
+          <p className="error-text">{error?.message}</p>
+          <div>
+            <button className="btn-login">
+              {loading ? 'Loading...' : 'Login'}
+            </button>
+          </div>
 
-        <div className="line-break">
-          <div className="line"></div>
-          <div>or</div>
-          <div className="line"></div>
-        </div>
-        <SocialMediaLogin name="Login" />
+          <div className="line-break">
+            <div className="line"></div>
+            <div>or</div>
+            <div className="line"></div>
+          </div>
+          <SocialMediaLogin name="Login" />
 
-        <div className="toggle-page">
-          <p>No account yet? </p>
-          <Link to="/registration" className="link">
-            Register
-          </Link>
-        </div>
-      </form>
-    </div>
+          <div className="toggle-page">
+            <p>No account yet? </p>
+            <Link to="/registration" className="link">
+              Register
+            </Link>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

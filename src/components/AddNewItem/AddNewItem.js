@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import PageTitle from '../../UI/PageTitle';
 import Header from '../Layout/Header/Header';
 import classes from './AddNewItem.module.css';
 
@@ -31,7 +32,10 @@ const AddNewItem = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-    const res = await axios.post('https://fathomless-coast-62063.herokuapp.com/addInventory', data);
+    const res = await axios.post(
+      'https://fathomless-coast-62063.herokuapp.com/addInventory',
+      data
+    );
     if (res.data.insertedId) {
       toast.success('Item Added Successfully');
     }
@@ -53,6 +57,7 @@ const AddNewItem = () => {
 
   return (
     <>
+      <PageTitle title="Add item" />
       <Header />
       <div className={classes['form-container']}>
         <form

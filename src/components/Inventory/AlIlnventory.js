@@ -5,6 +5,7 @@ import InventoryList from './InventoryList';
 import classes from './AllInventory.module.css';
 import Header from '../Layout/Header/Header';
 import { Link } from 'react-router-dom';
+import PageTitle from '../../UI/PageTitle';
 
 const AlIlnventory = () => {
   const [inventories, setInventories] = useState([]);
@@ -27,6 +28,7 @@ const AlIlnventory = () => {
 
   return (
     <>
+     <PageTitle title="Manage Inventory" />
       <Header />
       {isLoading && <LoadingSpinner />}
       {!isLoading && (

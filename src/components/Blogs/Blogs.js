@@ -1,11 +1,13 @@
 import React from 'react';
 import Header from '../Layout/Header/Header';
 import classes from './Blogs.module.css';
+import PageTitle from '../../UI/PageTitle';
 
 const Blogs = () => {
   return (
     <>
       <Header />
+      <PageTitle title="Blogs" />
       <div className={classes.blogs}>
         <div className={classes.blog}>
           <h3 className={classes.question}>

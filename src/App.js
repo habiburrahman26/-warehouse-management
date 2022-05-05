@@ -29,8 +29,22 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path="/manageInventories" element={<AlIlnventory />} />
-        <Route path="/addItem" element={<AddNewItem />} />
+        <Route
+          path="/manageInventories"
+          element={
+            <RequireAuth>
+              <AlIlnventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/addItem"
+          element={
+            <RequireAuth>
+              <AddNewItem />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/myItems"
           element={

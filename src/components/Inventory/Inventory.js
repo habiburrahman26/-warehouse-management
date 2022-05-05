@@ -10,15 +10,17 @@ const Inventory = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get('https://fathomless-coast-62063.herokuapp.com/inventory').then(({ data }) => {
-      setInventoryItems(data);
-      setIsLoading(false);
-    });
+    axios
+      .get('https://fathomless-coast-62063.herokuapp.com/inventory')
+      .then(({ data }) => {
+        setInventoryItems(data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <>
-    {isLoading && <p className='center'>Loading...</p>}
+      {isLoading && <p className="center">Loading...</p>}
       {!isLoading && (
         <section className={classes['section-inventory']}>
           <div className={classes['inventory-container']}>
@@ -29,11 +31,11 @@ const Inventory = () => {
               ))}
             </div>
           </div>
-        <div style={{ textAlign: 'center' }}>
-          <Link className={classes.link} to="/manageInventories">
-            Manage Inventories &rarr;
-          </Link>
-        </div>
+          <div style={{ textAlign: 'center' }}>
+            <Link className={classes.link} to="/manageInventories">
+              Manage Inventories &rarr;
+            </Link>
+          </div>
         </section>
       )}
     </>
