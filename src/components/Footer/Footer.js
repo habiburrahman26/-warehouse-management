@@ -74,7 +74,7 @@ const Footer = () => {
           <p className={classes['footer-heading']}>Account</p>
           <ul className={classes['footer-nav']}>
             <li>
-              <Link to="/register" className={classes['footer-link']}>
+              <Link to="/registration" className={classes['footer-link']}>
                 Create account
               </Link>
             </li>

@@ -15,4 +15,4 @@ click here to go live server site https://fathomless-coast-62063.herokuapp.com/
 - For authentication purpos I use react firebase hook
 - use react router dom v6
 - For toast used react tostify
-- This site use react, node, express, mongodb, rect-router, hook
+- This site use react, node, express, mongodb, rect-router, helmet

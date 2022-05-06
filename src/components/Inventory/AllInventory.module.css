@@ -41,6 +41,25 @@
   cursor: pointer;
 }
 
+.pagination {
+  font-size: 1.6rem;
+}
+
+.pagination button {
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: .7rem;
+  border: 2px solid #4dabf7;
+  background-color: #fff;
+  margin-bottom: 6rem;
+  cursor: pointer;
+}
+
+.pagination .selected{
+  background-color: #4dabf7;
+  color: #fff;
+}
+
 @media (max-width: 56.25em) {
   .tables {
     padding: 2rem 6rem;
@@ -50,7 +69,7 @@
 
 @media (max-width: 36em) {
   .tables {
-    padding: 2rem .6rem;
+    padding: 2rem 0.6rem;
   }
 
   .inventories {
@@ -59,7 +78,7 @@
   }
 
   .delete {
-    padding: .45rem .6rem;
+    padding: 0.45rem 0.6rem;
     background-color: #b83c23;
     color: #fff;
     font-size: 1.4rem;

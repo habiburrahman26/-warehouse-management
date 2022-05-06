@@ -4,11 +4,10 @@ import logo from '../../../assets/icon/logo.png';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import classes from './Header.module.css';
 import auth from '../../../firebase.init';
-import LoadingSpinner from '../../../UI/LoadingSpinner';
 import { signOut } from 'firebase/auth';
 
 const Header = () => {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,10 +16,6 @@ const Header = () => {
   const changeToggle = () => {
     setToggle((prevState) => !prevState);
   };
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
 
   const logoutHandler = () => {
     signOut(auth);
